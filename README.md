@@ -4,6 +4,20 @@ Landing page for LondonPlumberAI – AI receptionist for plumbers in London.
 
 Single-page HTML/CSS/JS (no frameworks). Includes hero, ROI calculator, how-it-works, pricing, and contact form. Dark professional theme, mobile responsive.
 
+## Push to GitHub
+
+If the repo is not yet on GitHub:
+
+1. Create a new repository on [GitHub](https://github.com/new) (e.g. `london-plumber-ai`). Do not add a README or .gitignore.
+2. In this folder run:
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/london-plumber-ai.git
+git push -u origin main
+```
+
+Or with GitHub CLI: `gh repo create london-plumber-ai --source=. --push`.
+
 ## Deploy
 
 - **Vercel:** Import this repo at [vercel.com](https://vercel.com). Framework: Other. Publish as static files.
