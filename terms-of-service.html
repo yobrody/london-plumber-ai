@@ -23,16 +23,15 @@
             background-color: #f1f5f9;
         }
 
-        .toc-link {
-            @apply block px-3 py-2 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition-colors;
-        }
-
         .toc-link.active {
-            @apply bg-blue-50 text-blue-700 font-semibold;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600;
         }
 
         .prose {
-            @apply text-slate-700 leading-relaxed;
+            color: #334155;
+            line-height: 1.75;
         }
 
         @media print {
@@ -51,7 +50,6 @@
     <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <!-- Lightning Bolt Logo -->
                 <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 2L28 14H18L16 30L4 18H14L16 2Z" fill="#2563eb" stroke="#1e40af" stroke-width="1.5" stroke-linejoin="round"/>
                 </svg>
@@ -77,20 +75,20 @@
         <aside class="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
             <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
                 <h2 class="text-sm font-bold text-slate-900 mb-4">Contents</h2>
-                <nav class="space-y-1">
-                    <a href="#overview" class="toc-link">1. Overview</a>
-                    <a href="#service-description" class="toc-link">2. Service Description</a>
-                    <a href="#client-obligations" class="toc-link">3. Client Obligations</a>
-                    <a href="#payment-terms" class="toc-link">4. Payment Terms</a>
-                    <a href="#cancellation" class="toc-link">5. Cancellation & Termination</a>
-                    <a href="#liability" class="toc-link">6. Liability Limitation</a>
-                    <a href="#data-processing" class="toc-link">7. Data Processing</a>
-                    <a href="#ai-disclaimer" class="toc-link">8. AI System Disclaimer</a>
-                    <a href="#intellectual-property" class="toc-link">9. Intellectual Property</a>
-                    <a href="#confidentiality" class="toc-link">10. Confidentiality</a>
-                    <a href="#service-changes" class="toc-link">11. Changes to Service</a>
-                    <a href="#governing-law" class="toc-link">12. Governing Law</a>
-                    <a href="#contact" class="toc-link">13. Contact & Notices</a>
+                <nav style="display:flex; flex-direction:column; gap:4px;">
+                    <a href="#overview" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">1. Overview</a>
+                    <a href="#service-description" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">2. Service Description</a>
+                    <a href="#client-obligations" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">3. Client Obligations</a>
+                    <a href="#payment-terms" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">4. Payment Terms</a>
+                    <a href="#cancellation" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">5. Cancellation & Termination</a>
+                    <a href="#liability" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">6. Liability Limitation</a>
+                    <a href="#data-processing" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">7. Data Processing</a>
+                    <a href="#ai-disclaimer" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">8. AI System Disclaimer</a>
+                    <a href="#intellectual-property" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">9. Intellectual Property</a>
+                    <a href="#confidentiality" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">10. Confidentiality</a>
+                    <a href="#service-changes" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">11. Changes to Service</a>
+                    <a href="#governing-law" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">12. Governing Law</a>
+                    <a href="#contact" class="toc-link" style="display:block; padding:6px 8px; border-radius:8px; font-size:14px; color:#475569; text-decoration:none;">13. Contact & Notices</a>
                 </nav>
 
                 <!-- UK Law Compliant Badge -->
@@ -103,7 +101,6 @@
                     </div>
                 </div>
 
-                <!-- Last Reviewed -->
                 <div class="mt-4">
                     <p class="text-xs text-slate-600">Last reviewed 25 February 2026</p>
                 </div>
@@ -164,7 +161,6 @@
                                 <li>Urgency categorisation (urgent/routine)</li>
                                 <li>SMS alert dispatch to Client's registered mobile number</li>
                                 <li>Automated CRM logging to Client's Google Sheets integration</li>
-                                <li>Service pathway reference: <code class="bg-slate-100 px-2 py-1 rounded text-sm">e3caf18f-3bda-4927-b6dd-437a6d5e903b</code></li>
                             </ul>
                             <h3 class="text-lg font-semibold text-slate-900 mt-4">Service Does NOT Include:</h3>
                             <ul class="list-disc list-inside space-y-2">
@@ -301,10 +297,10 @@
                             <p>The Client is the <strong>data controller</strong> for personal data of callers (e.g., phone numbers, names, reason for call). PlumberAI Ltd acts as the <strong>data processor</strong> and handles this data on the Client's instructions.</p>
                             <h3 class="text-lg font-semibold text-slate-900 mt-4">Data Processing Agreement:</h3>
                             <p>A separate Data Processing Agreement (DPA) governs the processing of personal data and is incorporated by reference into these terms. The DPA is available upon request.</p>
-                            <h3 class="text-lg font-semibold text-latex font-semibold text-slate-900 mt-4">Legal Basis:</h3>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Legal Basis:</h3>
                             <p>The Client warrants that it has the lawful basis (under UK GDPR Article 6) to engage PlumberAI for the handling and processing of caller personal data.</p>
                             <h3 class="text-lg font-semibold text-slate-900 mt-4">Compliance:</h3>
-                            <p>Both parties comply with the UK General Data Protection Regulation (GDPR) and the Data Protection Act 2018. For further details, please refer to our <a href="/privacy-policy" class="text-blue-700 hover:underline">Privacy Policy</a>.</p>
+                            <p>Both parties comply with the UK General Data Protection Regulation (GDPR) and the Data Protection Act 2018. For further details, please refer to our <a href="/privacy" class="text-blue-700 hover:underline">Privacy Policy</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -347,7 +343,7 @@
                             <ul class="list-disc list-inside space-y-2">
                                 <li>The PlumberAI platform and software</li>
                                 <li>The call pathway logic and algorithms</li>
-                                <li>All documentation, training materials, and documentation</li>
+                                <li>All documentation and training materials</li>
                                 <li>The PlumberAI brand, logos, and trademarks</li>
                             </ul>
                             <h3 class="text-lg font-semibold text-slate-900 mt-4">Client IP:</h3>
@@ -456,7 +452,7 @@
             </section>
 
             <!-- Footer -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mt-8 text-center text-slate-600 prose prose-sm">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mt-8 text-center text-slate-600">
                 <p>These Terms of Service were last updated on 25 February 2026. Version 1.0</p>
                 <p class="mt-4">PlumberAI Ltd | England & Wales | All rights reserved</p>
             </div>
@@ -469,7 +465,6 @@
             const sections = document.querySelectorAll('section[id]');
             const tocLinks = document.querySelectorAll('.toc-link');
 
-            // Intersection Observer for scroll spy
             const observerOptions = {
                 root: null,
                 rootMargin: '-80px 0px -66% 0px',
@@ -479,10 +474,7 @@
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
-                        // Remove active class from all links
                         tocLinks.forEach(link => link.classList.remove('active'));
-
-                        // Add active class to corresponding link
                         const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
                         if (activeLink) {
                             activeLink.classList.add('active');
@@ -491,10 +483,8 @@
                 });
             }, observerOptions);
 
-            // Observe all sections
             sections.forEach(section => observer.observe(section));
 
-            // Smooth scrolling for TOC links
             tocLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
