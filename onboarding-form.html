@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Client Setup — PlumberAI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: #f1f5f9;
+        }
+        
+        /* Custom toggle styling */
+        .toggle-input {
+            appearance: none;
+            width: 2.75rem;
+            height: 1.5rem;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            position: relative;
+            padding: 0.125rem;
+        }
+        
+        .toggle-input::after {
+            content: '';
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            background: white;
+            border-radius: 50%;
+            top: 0.125rem;
+            left: 0.125rem;
+            transition: left 0.3s;
+        }
+        
+        .toggle-input:checked {
+            background: #2563eb;
+        }
+        
+        .toggle-input:checked::after {
+            left: 1.375rem;
+        }
+        
+        /* Input validation states */
+        .input-error {
+            border-color: #ef4444 !important;
+        }
+        
+        .input-valid {
+            border-color: #22c55e !important;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.375rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 h-16">
+        <div class="max-w-2xl mx-auto px-4 h-full flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
+                    ⚡
+                </div>
+                <div>
+                    <div class="font-bold text-slate-800">PlumberAI</div>
+                    <div class="text-xs text-slate-400">New Client Setup</div>
+                </div>
+            </div>
+            <a href="dashboard.html" class="text-slate-600 text-sm hover:text-slate-800 transition">← Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            <div class="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold mb-4">
+                New Client Onboarding
+            </div>
+            <h1 class="text-4xl font-bold text-slate-800 mb-2">
+                Get your AI receptionist live in 24 hours
+            </h1>
+            <p class="text-slate-600 mb-6">
+                Complete the form below and we'll have your AI answering calls by tomorrow.
+            </p>
+            <div class="flex flex-wrap gap-3 justify-center mt-4">
+                <div class="bg-slate-50 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 border border-slate-200">
+                    ✓ Setup included
+                </div>
+                <div class="bg-slate-50 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 border border-slate-200">
+                    ✓ No contract lock-in
+                </div>
+                <div class="bg-slate-50 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 border border-slate-200">
+                    ✓ Cancel with 30 days notice
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center gap-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold">
+                        1
+                    </div>
+                    <span class="text-sm font-medium text-slate-700">Your Details</span>
+                </div>
+                <div class="w-12 h-0.5 bg-slate-300"></div>
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-slate-300 text-slate-600 flex items-center justify-center text-xs font-bold">
+                        2
+                    </div>
+                    <span class="text-sm text-slate-400">Payment</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div id="formContainer" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-8">
+            <form id="onboardingForm" onsubmit="handleFormSubmit(event)">
+                <!-- Your Business Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 pb-2 border-b border-slate-100">
+                        Your Business
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <label for="businessName" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Business name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="businessName" 
+                            name="businessName" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="Your business name"
+                        >
+                        <div class="error-message" id="businessName-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="ownerName" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Owner full name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="ownerName" 
+                            name="ownerName" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="Your full name"
+                        >
+                        <div class="error-message" id="ownerName-error"></div>
+                    </div>
+                </div>
+
+                <!-- Contact Details Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 pb-2 border-b border-slate-100">
+                        Contact Details
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Email address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="your@email.com"
+                        >
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label for="mobile" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Mobile number
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="mobile" 
+                            name="mobile" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="+44 7xxx xxxxxx"
+                        >
+                        <div class="error-message" id="mobile-error"></div>
+                    </div>
+                </div>
+
+                <!-- AI Receptionist Setup Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 pb-2 border-b border-slate-100">
+                        AI Receptionist Setup
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <label for="aiPhoneNumber" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Phone number for AI to answer
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="aiPhoneNumber" 
+                            name="aiPhoneNumber" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="The number your customers call"
+                        >
+                        <p class="text-xs text-slate-500 mt-1.5">
+                            This is the number PlumberAI will monitor and answer on your behalf.
+                        </p>
+                        <div class="error-message" id="aiPhoneNumber-error"></div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="coverageHours" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Coverage hours
+                        </label>
+                        <select 
+                            id="coverageHours" 
+                            name="coverageHours" 
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        >
+                            <option value="">Select coverage hours</option>
+                            <option value="24/7">24/7 — Always on</option>
+                            <option value="evenings">Evenings & Weekends (6pm–8am Mon–Fri + all weekend)</option>
+                            <option value="weekends">Weekends Only (Saturday & Sunday)</option>
+                        </select>
+                        <div class="error-message" id="coverageHours-error"></div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Prioritise emergency calls?
+                        </label>
+                        <div class="flex items-center gap-3">
+                            <input 
+                                type="checkbox" 
+                                id="emergencyHandling" 
+                                name="emergencyHandling"
+                                class="toggle-input"
+                            >
+                            <span class="text-sm text-slate-600">
+                                When enabled, the AI flags burst pipes, flooding and gas issues as critical and alerts you immediately.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions Section -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 pb-2 border-b border-slate-100">
+                        A Couple of Quick Questions
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <label for="hearAbout" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            How did you hear about PlumberAI?
+                        </label>
+                        <select 
+                            id="hearAbout" 
+                            name="hearAbout" 
+                            required
+                            onchange="handleHearAboutChange()"
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                        >
+                            <option value="">Select an option</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="google">Google Search</option>
+                            <option value="referral">Referral from another plumber</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="hearAbout-error"></div>
+                    </div>
+                    
+                    <div id="referralContainer" class="hidden">
+                        <label for="referralName" class="block text-sm font-medium text-slate-700 mb-1.5">
+                            Who referred you?
+                        </label>
+                        <input 
+                            type="text" 
+                            id="referralName" 
+                            name="referralName" 
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="Your referrer's name"
+                        >
+                        <div class="error-message" id="referralName-error"></div>
+                    </div>
+                </div>
+
+                <!-- Terms Section -->
+                <div class="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                    <p class="text-sm text-slate-700 mb-0">
+                        After submitting, you'll be taken to our secure payment page to set up your £297/month subscription. Your AI receptionist will go live within 24 hours of payment confirmation.
+                    </p>
+                </div>
+
+                <!-- Terms Checkbox -->
+                <div class="mb-6">
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <input 
+                            type="checkbox" 
+                            id="termsAccepted" 
+                            name="termsAccepted" 
+                            required
+                            class="w-5 h-5 rounded border border-slate-300 mt-0.5 checked:bg-blue-600 checked:border-blue-600 accent-blue-600 cursor-pointer"
+                        >
+                        <span class="text-sm text-slate-600">
+                            I agree to PlumberAI's 
+                            <a href="terms-of-service.html" class="text-blue-600 hover:text-blue-700 underline">Terms of Service</a> 
+                            and 
+                            <a href="privacy-policy.html" class="text-blue-600 hover:text-blue-700 underline">Privacy Policy</a>
+                        </span>
+                    </label>
+                    <div class="error-message" id="termsAccepted-error"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition"
+                >
+                    Save Details & Continue to Payment →
+                </button>
+            </form>
+        </div>
+
+        <!-- Confirmation Card (Hidden Initially) -->
+        <div id="confirmationContainer" class="hidden bg-white rounded-2xl shadow-sm border border-green-100 p-8 text-center">
+            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">
+                You're all set, <span id="firstNameDisplay"></span>!
+            </h2>
+            
+            <p class="text-slate-600 mb-6">
+                We'll have your AI receptionist live within 24 hours. Check your email for next steps.
+            </p>
+            
+            <!-- Details Summary -->
+            <div class="bg-slate-50 rounded-xl p-4 text-left mb-6">
+                <div class="text-xs uppercase tracking-wide text-slate-500 font-semibold mb-3">Summary</div>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Business</span>
+                        <span class="font-medium text-slate-800" id="summaryBusiness"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Mobile</span>
+                        <span class="font-medium text-slate-800" id="summaryMobile"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Coverage</span>
+                        <span class="font-medium text-slate-800" id="summaryCoverage"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="flex items-center gap-3 my-6">
+                <div class="flex-1 h-px bg-slate-200"></div>
+                <span class="text-xs text-slate-500 font-medium uppercase">Final step</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
+            </div>
+            
+            <p class="text-slate-700 text-sm font-medium mb-4">
+                Set up your subscription
+            </p>
+            
+            <!-- Payment Button -->
+            <button 
+                onclick="window.open('STRIPE_LINK_HERE', '_blank')"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition mb-4"
+            >
+                Complete Setup & Pay £297/month →
+            </button>
+            
+            <p class="text-xs text-slate-500 mb-6">
+                Secure payment via Stripe. Cancel anytime with 30 days notice. No setup fees.
+            </p>
+            
+            <p class="text-sm text-slate-600">
+                Questions? Email <a href="mailto:[email protected]" class="text-blue-600 hover:text-blue-700 underline">[email protected]</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Form validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            return phone.trim().length >= 10;
+        }
+
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorEl = document.getElementById(fieldId + '-error');
+            if (errorEl) {
+                errorEl.textContent = '';
+            }
+            field.classList.remove('input-error', 'input-valid');
+        }
+
+        function setFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorEl = document.getElementById(fieldId + '-error');
+            if (errorEl) {
+                errorEl.textContent = message;
+            }
+            field.classList.add('input-error');
+            field.classList.remove('input-valid');
+        }
+
+        function setFieldValid(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorEl = document.getElementById(fieldId + '-error');
+            if (errorEl) {
+                errorEl.textContent = '';
+            }
+            field.classList.remove('input-error');
+            field.classList.add('input-valid');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Clear all errors first
+            const fields = [
+                'businessName', 'ownerName', 'email', 'mobile', 
+                'aiPhoneNumber', 'coverageHours', 'hearAbout', 'referralName', 'termsAccepted'
+            ];
+            
+            fields.forEach(field => clearFieldError(field));
+
+            let isValid = true;
+
+            // Validate business name
+            const businessName = document.getElementById('businessName').value.trim();
+            if (!businessName) {
+                setFieldError('businessName', 'Business name is required');
+                isValid = false;
+            } else {
+                setFieldValid('businessName');
+            }
+
+            // Validate owner name
+            const ownerName = document.getElementById('ownerName').value.trim();
+            if (!ownerName) {
+                setFieldError('ownerName', 'Owner full name is required');
+                isValid = false;
+            } else {
+                setFieldValid('ownerName');
+            }
+
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            if (!email) {
+                setFieldError('email', 'Email address is required');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                setFieldError('email', 'Please enter a valid email address');
+                isValid = false;
+            } else {
+                setFieldValid('email');
+            }
+
+            // Validate mobile
+            const mobile = document.getElementById('mobile').value.trim();
+            if (!mobile) {
+                setFieldError('mobile', 'Mobile number is required');
+                isValid = false;
+            } else if (!validatePhone(mobile)) {
+                setFieldError('mobile', 'Please enter a valid phone number');
+                isValid = false;
+            } else {
+                setFieldValid('mobile');
+            }
+
+            // Validate AI phone number
+            const aiPhoneNumber = document.getElementById('aiPhoneNumber').value.trim();
+            if (!aiPhoneNumber) {
+                setFieldError('aiPhoneNumber', 'Phone number is required');
+                isValid = false;
+            } else if (!validatePhone(aiPhoneNumber)) {
+                setFieldError('aiPhoneNumber', 'Please enter a valid phone number');
+                isValid = false;
+            } else {
+                setFieldValid('aiPhoneNumber');
+            }
+
+            // Validate coverage hours
+            const coverageHours = document.getElementById('coverageHours').value;
+            if (!coverageHours) {
+                setFieldError('coverageHours', 'Please select coverage hours');
+                isValid = false;
+            } else {
+                setFieldValid('coverageHours');
+            }
+
+            // Validate hear about
+            const hearAbout = document.getElementById('hearAbout').value;
+            if (!hearAbout) {
+                setFieldError('hearAbout', 'Please select an option');
+                isValid = false;
+            } else {
+                setFieldValid('hearAbout');
+            }
+
+            // Validate referral name if referral selected
+            if (hearAbout === 'referral') {
+                const referralName = document.getElementById('referralName').value.trim();
+                if (!referralName) {
+                    setFieldError('referralName', 'Please tell us who referred you');
+                    isValid = false;
+                } else {
+                    setFieldValid('referralName');
+                }
+            }
+
+            // Validate terms
+            const termsAccepted = document.getElementById('termsAccepted').checked;
+            if (!termsAccepted) {
+                setFieldError('termsAccepted', 'You must accept the terms to continue');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return;
+            }
+
+            // Show confirmation card
+            showConfirmation();
+        }
+
+        function showConfirmation() {
+            const businessName = document.getElementById('businessName').value;
+            const ownerName = document.getElementById('ownerName').value;
+            const mobile = document.getElementById('mobile').value;
+            const coverageHours = document.getElementById('coverageHours').value;
+
+            // Get first name
+            const firstName = ownerName.split(' ')[0];
+            document.getElementById('firstNameDisplay').textContent = firstName;
+
+            // Populate summary
+            document.getElementById('summaryBusiness').textContent = businessName;
+            document.getElementById('summaryMobile').textContent = mobile;
+            
+            // Format coverage hours display
+            let coverageDisplay = coverageHours;
+            if (coverageHours === '24/7') {
+                coverageDisplay = '24/7 — Always on';
+            } else if (coverageHours === 'evenings') {
+                coverageDisplay = 'Evenings & Weekends';
+            } else if (coverageHours === 'weekends') {
+                coverageDisplay = 'Weekends Only';
+            }
+            document.getElementById('summaryCoverage').textContent = coverageDisplay;
+
+            // Hide form, show confirmation
+            document.getElementById('formContainer').classList.add('hidden');
+            document.getElementById('confirmationContainer').classList.remove('hidden');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function handleHearAboutChange() {
+            const hearAbout = document.getElementById('hearAbout').value;
+            const referralContainer = document.getElementById('referralContainer');
+            
+            if (hearAbout === 'referral') {
+                referralContainer.classList.remove('hidden');
+                document.getElementById('referralName').setAttribute('required', '');
+            } else {
+                referralContainer.classList.add('hidden');
+                document.getElementById('referralName').removeAttribute('required');
+                document.getElementById('referralName').value = '';
+                clearFieldError('referralName');
+            }
+        }
+    </script>
+</body>
+</html>

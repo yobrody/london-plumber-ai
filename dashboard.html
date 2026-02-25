@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlumberAI — Client Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * { font-family: 'Inter', sans-serif; }
+
+    body { background: #f1f5f9; }
+
+    /* Login overlay */
+    #login-overlay {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+    }
+
+    /* Logo pulse animation */
+    @keyframes pulse-ring {
+      0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+      70%  { transform: scale(1);    box-shadow: 0 0 0 12px rgba(59,130,246,0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+    }
+    .logo-pulse { animation: pulse-ring 2.5s ease-in-out infinite; }
+
+    /* Spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { animation: spin 0.8s linear infinite; }
+
+    /* Table row hover */
+    .lead-row { transition: background 0.15s ease; }
+    .lead-row:hover { background: #eff6ff !important; }
+
+    /* Badge shimmer for emergency */
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.75; }
+    }
+    .badge-emergency { animation: badge-pulse 1.8s ease-in-out infinite; }
+
+    /* Smooth fade-in for dashboard */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.4s ease forwards; }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+
+    /* Custom checkbox */
+    input[type="password"]::placeholder { color: #94a3b8; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- ═══════════════════════════════════════════════════
+       LOGIN OVERLAY
+  ═══════════════════════════════════════════════════ -->
+  <div id="login-overlay" class="fixed inset-0 z-50 flex items-center justify-center px-4">
+    <div class="w-full max-w-sm">
+
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <div class="logo-pulse inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 mb-4">
+          <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white tracking-tight">PlumberAI</h1>
+        <p class="text-blue-300 text-sm mt-1">Client Dashboard · London</p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-2xl p-8">
+        <h2 class="text-lg font-semibold text-slate-800 mb-1">Sign in to your dashboard</h2>
+        <p class="text-sm text-slate-500 mb-6">Enter your password to view your leads.</p>
+
+        <div id="login-error" class="hidden mb-4 px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600 flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+          <span>Incorrect password. Please try again.</span>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+          <div class="relative mb-5">
+            <input
+              id="password-input"
+              type="password"
+              placeholder="Enter your password"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition pr-11"
+              autofocus
+            />
+            <button type="button" onclick="togglePassword()" class="absolute right-3 top-3 text-slate-400 hover:text-slate-600 transition">
+              <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm"
+          >
+            Access Dashboard
+          </button>
+        </form>
+
+        <p class="text-center text-xs text-slate-400 mt-5">
+          Powered by <span class="font-semibold text-slate-500">PlumberAI</span> · £297/month
+        </p>
+      </div>
+
+      <p class="text-center text-xs text-blue-400 mt-4 opacity-60">
+        Forgotten your password? Contact your PlumberAI account manager.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       MAIN DASHBOARD (hidden until login)
+  ═══════════════════════════════════════════════════ -->
+  <div id="dashboard" class="hidden fade-in min-h-screen">
+
+    <!-- Top Nav -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="font-bold text-slate-800 text-lg leading-none block">PlumberAI</span>
+              <span class="text-xs text-slate-400 leading-none">Leads Dashboard</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="loadLeads()" title="Refresh leads"
+              class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition px-3 py-1.5 rounded-lg hover:bg-blue-50">
+              <svg id="refresh-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+              <span class="hidden sm:inline">Refresh</span>
+            </button>
+            <button onclick="logout()"
+              class="text-sm text-slate-500 hover:text-red-600 transition px-3 py-1.5 rounded-lg hover:bg-red-50">
+              Sign out
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+      <!-- Header row -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <div>
+          <h1 class="text-2xl font-bold text-slate-800">Your Leads</h1>
+          <p class="text-sm text-slate-500 mt-0.5" id="last-updated">Loading data…</p>
+        </div>
+        <!-- Search / filter -->
+        <div class="flex items-center gap-2">
+          <div class="relative">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search leads…"
+              oninput="filterLeads()"
+              class="pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 sm:w-56"
+            />
+            <svg class="absolute left-3 top-2.5 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <select id="urgency-filter" onchange="filterLeads()"
+            class="text-sm border border-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-600">
+            <option value="">All urgency</option>
+            <option value="emergency">Emergency</option>
+            <option value="urgent">Urgent</option>
+            <option value="routine">Routine</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── Stats Cards ── -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+
+        <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+          <p class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Total Leads</p>
+          <p id="stat-total" class="text-3xl font-bold text-slate-800">—</p>
+          <p class="text-xs text-slate-400 mt-0.5">all time</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-red-100 shadow-sm">
+          <p class="text-xs font-medium text-red-500 uppercase tracking-wide mb-1">Emergency</p>
+          <p id="stat-emergency" class="text-3xl font-bold text-red-600">—</p>
+          <p class="text-xs text-slate-400 mt-0.5">immediate call-out</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-amber-100 shadow-sm">
+          <p class="text-xs font-medium text-amber-500 uppercase tracking-wide mb-1">Urgent</p>
+          <p id="stat-urgent" class="text-3xl font-bold text-amber-600">—</p>
+          <p class="text-xs text-slate-400 mt-0.5">same day</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-green-100 shadow-sm">
+          <p class="text-xs font-medium text-green-500 uppercase tracking-wide mb-1">Routine</p>
+          <p id="stat-routine" class="text-3xl font-bold text-green-600">—</p>
+          <p class="text-xs text-slate-400 mt-0.5">scheduled work</p>
+        </div>
+
+      </div>
+
+      <!-- ── Leads Table Card ── -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+
+        <!-- Loading state -->
+        <div id="loading-state" class="flex flex-col items-center justify-center py-20 gap-3">
+          <svg class="spinner w-8 h-8 text-blue-500" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+          <p class="text-sm text-slate-500">Fetching your leads…</p>
+        </div>
+
+        <!-- Error state -->
+        <div id="error-state" class="hidden flex-col items-center justify-center py-20 gap-3 text-center px-6">
+          <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <p class="text-slate-700 font-medium">Unable to load leads</p>
+          <p class="text-sm text-slate-500" id="error-message">Please ensure your Google Sheet is set to "Anyone with the link can view".</p>
+          <button onclick="loadLeads()" class="mt-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">Try again</button>
+        </div>
+
+        <!-- Empty state -->
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-20 gap-3 text-center px-6">
+          <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <p class="text-slate-700 font-medium">No leads yet</p>
+          <p class="text-sm text-slate-500">Your AI receptionist hasn't captured any leads yet.<br/>Leads will appear here as calls come in.</p>
+        </div>
+
+        <!-- Table -->
+        <div id="table-wrapper" class="hidden overflow-x-auto">
+          <table class="w-full text-sm min-w-[720px]">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200">
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Caller Name</th>
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Phone</th>
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Postcode</th>
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Issue Type</th>
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Urgency</th>
+                <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wide whitespace-nowrap">Call Date</th>
+              </tr>
+            </thead>
+            <tbody id="leads-tbody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+
+          <!-- Table footer -->
+          <div class="flex items-center justify-between px-5 py-3 border-t border-slate-100 bg-slate-50">
+            <p id="showing-count" class="text-xs text-slate-500"></p>
+            <p class="text-xs text-slate-400">Data synced from Google Sheets CRM</p>
+          </div>
+        </div>
+
+      </div><!-- /table card -->
+
+      <!-- Footer -->
+      <p class="text-center text-xs text-slate-400 mt-6">
+        PlumberAI · AI Receptionist for London Plumbers · £297/month
+        <span class="mx-2">·</span>
+        <a href="mailto:[email protected]" class="hover:text-slate-600 transition">Support</a>
+      </p>
+
+    </main>
+  </div><!-- /dashboard -->
+
+  <!-- ═══════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════ -->
+  <script>
+    // ─── CONFIG ──────────────────────────────────────
+    const CONFIG = {
+      // Change this password for each client
+      password: 'plumber2026',
+
+      // Your Google Sheet ID
+      sheetId: '1-0TCE68X9VfcAuMMi8uv8jMZ1jRvkOJFKBwun_1a-sk',
+
+      // Sheet tab name (must match exactly)
+      sheetName: 'CRM',
+
+      // Session storage key
+      sessionKey: 'plumberai_auth'
+    };
+
+    // ─── URGENCY MAPPING ─────────────────────────────
+    // Maps values from the sheet to display categories
+    const URGENCY_MAP = {
+      // Emergency (red)
+      'urgent':       'emergency',
+      'emergency':    'emergency',
+      'burst pipe':   'emergency',
+      'burst_pipe':   'emergency',
+      'flooding':     'emergency',
+      'flood':        'emergency',
+      'no hot water': 'urgent',
+
+      // Urgent (amber)
+      'priority':     'urgent',
+      'high':         'urgent',
+      'same day':     'urgent',
+      'same_day':     'urgent',
+
+      // Routine (green)
+      'standard':     'routine',
+      'routine':      'routine',
+      'low':          'routine',
+      'scheduled':    'routine',
+      'non-urgent':   'routine',
+      'non_urgent':   'routine',
+    };
+
+    const URGENCY_STYLES = {
+      emergency: {
+        badge:  'badge-emergency inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700 ring-1 ring-red-200',
+        dot:    'w-1.5 h-1.5 rounded-full bg-red-500',
+        label:  'Emergency'
+      },
+      urgent: {
+        badge:  'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 ring-1 ring-amber-200',
+        dot:    'w-1.5 h-1.5 rounded-full bg-amber-500',
+        label:  'Urgent'
+      },
+      routine: {
+        badge:  'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700 ring-1 ring-green-200',
+        dot:    'w-1.5 h-1.5 rounded-full bg-green-500',
+        label:  'Routine'
+      },
+      unknown: {
+        badge:  'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 ring-1 ring-slate-200',
+        dot:    'w-1.5 h-1.5 rounded-full bg-slate-400',
+        label:  'Unknown'
+      }
+    };
+
+    // ─── AUTH ─────────────────────────────────────────
+    function handleLogin(e) {
+      e.preventDefault();
+      const input = document.getElementById('password-input').value;
+      if (input === CONFIG.password) {
+        sessionStorage.setItem(CONFIG.sessionKey, 'true');
+        showDashboard();
+      } else {
+        document.getElementById('login-error').classList.remove('hidden');
+        document.getElementById('password-input').value = '';
+        document.getElementById('password-input').focus();
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem(CONFIG.sessionKey);
+      location.reload();
+    }
+
+    function togglePassword() {
+      const input = document.getElementById('password-input');
+      const icon  = document.getElementById('eye-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7
+               a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243
+               M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29
+               M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7
+               a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>`;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7
+               -1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`;
+      }
+    }
+
+    function showDashboard() {
+      document.getElementById('login-overlay').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+      loadLeads();
+    }
+
+    // ─── DATA FETCHING ────────────────────────────────
+    let allLeads = [];
+
+    async function loadLeads() {
+      setLoadingState('loading');
+      animateRefreshIcon(true);
+
+      const url =
+        `https://docs.google.com/spreadsheets/d/${CONFIG.sheetId}/gviz/tq` +
+        `?tqx=out:json&sheet=${encodeURIComponent(CONFIG.sheetName)}`;
+
+      try {
+        const res  = await fetch(url);
+        const text = await res.text();
+
+        // Google wraps the JSON in a callback: google.visualization.Query.setResponse({...})
+        const jsonStr  = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/);
+        if (!jsonStr) throw new Error('Unexpected response format from Google Sheets.');
+
+        const data  = JSON.parse(jsonStr[1]);
+        const rows  = data.table?.rows || [];
+        const cols  = data.table?.cols || [];
+
+        // Build column index map from labels
+        const colIndex = {};
+        cols.forEach((col, i) => {
+          colIndex[col.label?.toLowerCase().trim()] = i;
+        });
+
+        // Parse rows — skip header row if it appears as a data row
+        allLeads = [];
+        rows.forEach((row, rowNum) => {
+          if (!row.c) return;
+          const get = (label) => {
+            const idx = colIndex[label];
+            return (idx !== undefined && row.c[idx]?.v != null)
+              ? String(row.c[idx].v).trim()
+              : '';
+          };
+
+          // Also try positional fallback (columns A–F at minimum)
+          const cell = (i) => row.c[i]?.v != null ? String(row.c[i].v).trim() : '';
+
+          const timestamp   = get('timestamp')    || cell(0);
+          const name        = get('lead name')     || cell(1);
+          const phone       = get('phone number')  || cell(2);
+          const postcode    = get('postcode')      || cell(3);
+          const issueType   = get('issue type')    || cell(4);
+          const urgencyRaw  = get('urgency level') || cell(5);
+
+          // Skip completely empty rows or header rows
+          if (!name && !phone && !urgencyRaw) return;
+          if (name.toLowerCase() === 'lead name' || name.toLowerCase() === 'name') return;
+
+          allLeads.push({ timestamp, name, phone, postcode, issueType, urgencyRaw });
+        });
+
+        renderLeads(allLeads);
+        updateStats(allLeads);
+        updateLastUpdated();
+        setLoadingState('table');
+
+      } catch (err) {
+        console.error('Failed to load leads:', err);
+        document.getElementById('error-message').textContent =
+          err.message || 'Could not connect to Google Sheets. Check that the sheet is publicly viewable.';
+        setLoadingState('error');
+      } finally {
+        animateRefreshIcon(false);
+      }
+    }
+
+    // ─── RENDER ───────────────────────────────────────
+    function renderLeads(leads) {
+      const tbody = document.getElementById('leads-tbody');
+      tbody.innerHTML = '';
+
+      if (leads.length === 0) {
+        setLoadingState('empty');
+        return;
+      }
+
+      setLoadingState('table');
+
+      // Sort: most recent first (if timestamp available)
+      const sorted = [...leads].sort((a, b) => {
+        const da = parseDate(a.timestamp);
+        const db = parseDate(b.timestamp);
+        return db - da;
+      });
+
+      sorted.forEach((lead, i) => {
+        const urgencyKey  = resolveUrgency(lead.urgencyRaw);
+        const urgencyConf = URGENCY_STYLES[urgencyKey];
+        const rowBg       = i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
+
+        const tr = document.createElement('tr');
+        tr.className = `lead-row border-b border-slate-100 ${rowBg}`;
+        tr.innerHTML = `
+          <td class="px-5 py-3.5 font-medium text-slate-800 whitespace-nowrap">
+            ${escHtml(lead.name) || '<span class="text-slate-400 italic text-xs">Unknown</span>'}
+          </td>
+          <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap font-mono text-xs">
+            ${lead.phone
+              ? `<a href="tel:${escHtml(lead.phone)}" class="hover:text-blue-600 transition">${escHtml(lead.phone)}</a>`
+              : '<span class="text-slate-400 italic">—</span>'}
+          </td>
+          <td class="px-5 py-3.5 text-slate-700 whitespace-nowrap font-medium uppercase tracking-wide text-xs">
+            ${escHtml(lead.postcode) || '<span class="text-slate-400 normal-case font-normal italic">—</span>'}
+          </td>
+          <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap">
+            ${formatIssueType(lead.issueType)}
+          </td>
+          <td class="px-5 py-3.5 whitespace-nowrap">
+            <span class="${urgencyConf.badge}">
+              <span class="${urgencyConf.dot}"></span>
+              ${urgencyConf.label}
+            </span>
+          </td>
+          <td class="px-5 py-3.5 text-slate-500 whitespace-nowrap text-xs">
+            ${formatDate(lead.timestamp)}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('showing-count').textContent =
+        `Showing ${leads.length} lead${leads.length !== 1 ? 's' : ''}`;
+    }
+
+    // ─── STATS ────────────────────────────────────────
+    function updateStats(leads) {
+      const counts = { emergency: 0, urgent: 0, routine: 0, unknown: 0 };
+      leads.forEach(l => { counts[resolveUrgency(l.urgencyRaw)]++; });
+
+      document.getElementById('stat-total').textContent     = leads.length;
+      document.getElementById('stat-emergency').textContent = counts.emergency;
+      document.getElementById('stat-urgent').textContent    = counts.urgent;
+      document.getElementById('stat-routine').textContent   = counts.routine + counts.unknown;
+    }
+
+    // ─── FILTER / SEARCH ──────────────────────────────
+    function filterLeads() {
+      const query   = document.getElementById('search-input').value.toLowerCase();
+      const urgency = document.getElementById('urgency-filter').value;
+
+      const filtered = allLeads.filter(lead => {
+        const matchesSearch = !query || [
+          lead.name, lead.phone, lead.postcode, lead.issueType, lead.urgencyRaw
+        ].some(f => f.toLowerCase().includes(query));
+
+        const matchesUrgency = !urgency || resolveUrgency(lead.urgencyRaw) === urgency;
+
+        return matchesSearch && matchesUrgency;
+      });
+
+      renderLeads(filtered);
+    }
+
+    // ─── HELPERS ──────────────────────────────────────
+    function resolveUrgency(raw) {
+      if (!raw) return 'unknown';
+      const key = raw.toLowerCase().trim();
+      return URGENCY_MAP[key] || 'unknown';
+    }
+
+    function formatIssueType(raw) {
+      if (!raw) return '<span class="text-slate-400 italic">—</span>';
+      // Replace underscores/hyphens with spaces, title-case
+      const clean = raw.replace(/[_-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      return `<span class="text-slate-700">${escHtml(clean)}</span>`;
+    }
+
+    function formatDate(raw) {
+      if (!raw) return '—';
+      try {
+        // Handle Google Sheets date format: "Date(2026,1,7,14,30,0)"
+        const gMatch = raw.match(/Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)/);
+        if (gMatch) {
+          const d = new Date(
+            parseInt(gMatch[1]),
+            parseInt(gMatch[2]),
+            parseInt(gMatch[3]),
+            parseInt(gMatch[4] || 0),
+            parseInt(gMatch[5] || 0)
+          );
+          return formatDateObj(d);
+        }
+        // Try natural parse
+        const d = new Date(raw);
+        if (!isNaN(d.getTime())) return formatDateObj(d);
+        return raw;
+      } catch { return raw; }
+    }
+
+    function formatDateObj(d) {
+      return d.toLocaleDateString('en-GB', {
+        day:   '2-digit',
+        month: 'short',
+        year:  'numeric',
+        hour:  '2-digit',
+        minute:'2-digit',
+        hour12: false
+      }).replace(',', '');
+    }
+
+    function parseDate(raw) {
+      if (!raw) return 0;
+      try {
+        const gMatch = raw.match(/Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)/);
+        if (gMatch) {
+          return new Date(
+            parseInt(gMatch[1]), parseInt(gMatch[2]), parseInt(gMatch[3]),
+            parseInt(gMatch[4]||0), parseInt(gMatch[5]||0)
+          ).getTime();
+        }
+        return new Date(raw).getTime() || 0;
+      } catch { return 0; }
+    }
+
+    function escHtml(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function setLoadingState(state) {
+      const states = {
+        'loading-state': state === 'loading',
+        'error-state':   state === 'error',
+        'empty-state':   state === 'empty',
+        'table-wrapper': state === 'table'
+      };
+      Object.entries(states).forEach(([id, visible]) => {
+        const el = document.getElementById(id);
+        if (visible) {
+          el.classList.remove('hidden');
+          el.classList.add('flex');
+        } else {
+          el.classList.add('hidden');
+          el.classList.remove('flex');
+        }
+      });
+    }
+
+    function animateRefreshIcon(spinning) {
+      const icon = document.getElementById('refresh-icon');
+      if (icon) {
+        spinning ? icon.classList.add('spinner') : icon.classList.remove('spinner');
+      }
+    }
+
+    function updateLastUpdated() {
+      const now = new Date().toLocaleTimeString('en-GB', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+      });
+      document.getElementById('last-updated').textContent = `Last synced at ${now}`;
+    }
+
+    // ─── AUTO-REFRESH every 60 seconds ───────────────
+    setInterval(() => {
+      if (!document.getElementById('dashboard').classList.contains('hidden')) {
+        loadLeads();
+      }
+    }, 60000);
+
+    // ─── INIT ─────────────────────────────────────────
+    (function init() {
+      if (sessionStorage.getItem(CONFIG.sessionKey) === 'true') {
+        showDashboard();
+      }
+    })();
+  </script>
+
+</body>
+</html>

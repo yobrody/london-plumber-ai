@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — PlumberAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    body { background: #f1f5f9; }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Section anchor offset for sticky nav */
+    [id] { scroll-margin-top: 80px; }
+
+    /* Prose styling */
+    .prose p   { margin-bottom: 0.85rem; color: #475569; line-height: 1.75; }
+    .prose ul  { list-style: disc; padding-left: 1.4rem; color: #475569; margin-bottom: 0.85rem; }
+    .prose ul li { margin-bottom: 0.35rem; line-height: 1.7; }
+    .prose a   { color: #2563eb; text-decoration: underline; }
+    .prose a:hover { color: #1d4ed8; }
+
+    /* Table of contents active link */
+    .toc-link.active { color: #2563eb; font-weight: 600; }
+
+    /* Print */
+    @media print {
+      nav, aside { display: none !important; }
+      .no-print  { display: none !important; }
+      body { background: white; }
+      main { padding: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- ── Top Nav ── -->
+  <nav class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-bold text-slate-800 text-lg leading-none block">PlumberAI</span>
+            <span class="text-xs text-slate-400 leading-none">Privacy Policy</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="window.print()"
+            class="no-print hidden sm:flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition px-3 py-1.5 rounded-lg hover:bg-blue-50">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+            </svg>
+            Print / Save PDF
+          </button>
+          <a href="dashboard.html"
+            class="text-sm text-slate-500 hover:text-blue-600 transition px-3 py-1.5 rounded-lg hover:bg-blue-50">
+            ← Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex gap-8 items-start">
+
+      <!-- ── Sidebar Table of Contents ── -->
+      <aside class="no-print hidden lg:block w-64 flex-shrink-0 sticky top-24">
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Contents</p>
+          <nav id="toc" class="space-y-1">
+            <a href="#overview"        class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">1. Overview</a>
+            <a href="#controller"      class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">2. Data Controller</a>
+            <a href="#what-we-collect" class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">3. Data We Collect</a>
+            <a href="#lawful-basis"    class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">4. Lawful Basis</a>
+            <a href="#how-we-use"      class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">5. How We Use Data</a>
+            <a href="#third-parties"   class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">6. Third-Party Processors</a>
+            <a href="#retention"       class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">7. Retention Period</a>
+            <a href="#your-rights"     class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">8. Your Rights</a>
+            <a href="#security"        class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">9. Security</a>
+            <a href="#cookies"         class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">10. Cookies</a>
+            <a href="#ico"             class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">11. ICO Registration</a>
+            <a href="#changes"         class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">12. Changes to This Policy</a>
+            <a href="#contact"         class="toc-link block text-sm text-slate-600 hover:text-blue-600 py-1 transition">13. Contact Us</a>
+          </nav>
+        </div>
+
+        <!-- GDPR badge -->
+        <div class="mt-4 bg-blue-50 border border-blue-100 rounded-2xl p-4 text-center">
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 mb-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold text-blue-700">UK GDPR Compliant</p>
+          <p class="text-xs text-blue-500 mt-0.5">Data Protection Act 2018</p>
+        </div>
+      </aside>
+
+      <!-- ── Main Content ── -->
+      <main class="flex-1 min-w-0">
+
+        <!-- Hero card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-6">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold mb-3">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                UK GDPR &amp; Data Protection Act 2018
+              </div>
+              <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 leading-tight">Privacy Policy</h1>
+              <p class="text-slate-500 mt-1 text-sm">PlumberAI — AI Receptionist Service for London Plumbers</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <p class="text-xs text-slate-400">Version</p>
+              <p class="font-bold text-slate-700">1.0</p>
+              <p class="text-xs text-slate-400 mt-1">Effective date</p>
+              <p class="font-semibold text-slate-700 text-sm">25 February 2026</p>
+            </div>
+          </div>
+
+          <!-- Summary banner -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-700">Data controller</p>
+                <p class="text-xs text-slate-500">PlumberAI Ltd</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3">
+              <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-700">Retention period</p>
+                <p class="text-xs text-slate-500">12 months maximum</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-700">Lawful basis</p>
+                <p class="text-xs text-slate-500">Legitimate interests</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 1: Overview ── -->
+        <section id="overview" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">1</span>
+            Overview
+          </h2>
+          <p>This Privacy Policy explains how <strong>PlumberAI</strong> ("we", "us", "our") collects, uses, stores, and protects personal data in the course of providing our AI receptionist service to plumbing businesses ("Plumber Clients") operating in the United Kingdom.</p>
+          <p>PlumberAI is a business-to-business (B2B) SaaS platform. We process personal data relating to individuals who contact our Plumber Clients via telephone ("End Users") solely for the purpose of triaging and qualifying inbound service enquiries on behalf of those Plumber Clients.</p>
+          <p>We are committed to processing personal data in accordance with the <strong>UK General Data Protection Regulation (UK GDPR)</strong> and the <strong>Data Protection Act 2018</strong>. This policy applies to all personal data processed by PlumberAI in connection with the provision of our services.</p>
+          <p>If you are an End User whose data has been collected through a PlumberAI-powered telephone system, this policy explains your rights and how to exercise them.</p>
+        </section>
+
+        <!-- ── SECTION 2: Data Controller ── -->
+        <section id="controller" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">2</span>
+            Data Controller
+          </h2>
+
+          <div class="not-prose bg-slate-50 rounded-xl border border-slate-200 p-5 mb-4">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Data Controller Details</p>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+              <div>
+                <p class="text-xs text-slate-400 font-medium">Company name</p>
+                <p class="text-slate-700 font-semibold">PlumberAI Ltd</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">Registered address</p>
+                <p class="text-slate-700">[Registered address — to be completed]</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">Email</p>
+                <p class="text-slate-700"><a href="mailto:[email protected]" class="text-blue-600">[email protected]</a></p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">Company number</p>
+                <p class="text-slate-700">[Companies House number — to be completed]</p>
+              </div>
+            </div>
+          </div>
+
+          <p><strong>Joint controllers and processors:</strong> In certain circumstances, PlumberAI acts as a <em>data processor</em> on behalf of our Plumber Clients (who are the data controllers for their own customer relationships). Where this is the case, a separate Data Processing Agreement (DPA) is entered into with each Plumber Client, as required by Article 28 UK GDPR.</p>
+          <p>Where PlumberAI determines the purposes and means of processing (for example, when operating platform-level analytics or security logging), PlumberAI acts as a data controller in its own right.</p>
+        </section>
+
+        <!-- ── SECTION 3: What We Collect ── -->
+        <section id="what-we-collect" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">3</span>
+            Data We Collect
+          </h2>
+          <p>We collect and process the following categories of personal data:</p>
+
+          <!-- Data table -->
+          <div class="not-prose overflow-x-auto rounded-xl border border-slate-200 mb-4">
+            <table class="w-full text-sm min-w-[480px]">
+              <thead>
+                <tr class="bg-slate-50 border-b border-slate-200">
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Data Category</th>
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Examples</th>
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Source</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Identity data</td>
+                  <td class="px-4 py-3 text-slate-600">Caller's first name, surname</td>
+                  <td class="px-4 py-3 text-slate-500">Provided verbally during AI call</td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Contact data</td>
+                  <td class="px-4 py-3 text-slate-600">Phone number (mobile or landline)</td>
+                  <td class="px-4 py-3 text-slate-500">Caller ID / provided verbally</td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Location data</td>
+                  <td class="px-4 py-3 text-slate-600">UK postcode (e.g. SW1A 1AA)</td>
+                  <td class="px-4 py-3 text-slate-500">Provided verbally during AI call</td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Service enquiry data</td>
+                  <td class="px-4 py-3 text-slate-600">Issue type (e.g. burst pipe, boiler fault), urgency level, property type</td>
+                  <td class="px-4 py-3 text-slate-500">Provided verbally during AI call</td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Call metadata</td>
+                  <td class="px-4 py-3 text-slate-600">Call timestamp, call duration, call recording</td>
+                  <td class="px-4 py-3 text-slate-500">Automatically captured by telephony system</td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3 font-medium text-slate-700">Technical data</td>
+                  <td class="px-4 py-3 text-slate-600">IP address, browser type (dashboard users only), log data</td>
+                  <td class="px-4 py-3 text-slate-500">Automatically collected via dashboard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Special category data:</strong> We do not intentionally collect any special category data (as defined under Article 9 UK GDPR), including health, racial or ethnic origin, or financial data. If an End User volunteers such information during a call, it is not stored or processed beyond the immediate call context.</p>
+          <p><strong>Children's data:</strong> Our service is not directed at children under the age of 18. We do not knowingly collect personal data from children.</p>
+        </section>
+
+        <!-- ── SECTION 4: Lawful Basis ── -->
+        <section id="lawful-basis" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">4</span>
+            Lawful Basis for Processing
+          </h2>
+          <p>We rely on the following lawful bases under Article 6 UK GDPR:</p>
+
+          <!-- Basis cards -->
+          <div class="not-prose space-y-3 mb-4">
+
+            <div class="rounded-xl border border-blue-100 bg-blue-50 p-4">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-blue-800 text-sm">Primary basis: Legitimate Interests (Article 6(1)(f))</p>
+                  <p class="text-sm text-blue-700 mt-1">We and our Plumber Clients have a legitimate interest in efficiently triaging and responding to inbound emergency service enquiries. This interest is balanced against End Users' privacy rights: the data collected is minimal, directly relevant to the service requested, and processed only for the purpose of connecting End Users with appropriate plumbing assistance. We have conducted a Legitimate Interests Assessment (LIA) and concluded that End Users' interests do not override this legitimate interest, given that they have actively contacted our Plumber Clients seeking a service.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-green-100 bg-green-50 p-4">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-green-800 text-sm">Secondary basis: Contract Performance (Article 6(1)(b))</p>
+                  <p class="text-sm text-green-700 mt-1">Where an End User has requested a call-back or service visit, processing their contact and location data is necessary for the performance of steps taken at their request prior to entering a contract for plumbing services with our Plumber Client.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-amber-100 bg-amber-50 p-4">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-amber-800 text-sm">Compliance and legal obligations (Article 6(1)(c))</p>
+                  <p class="text-sm text-amber-700 mt-1">We may process data where required to comply with applicable legal obligations, including obligations under the Privacy and Electronic Communications Regulations 2003 (PECR) and relevant ICO guidance on unsolicited communications.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p><strong>Do-Not-Call (DNC) compliance:</strong> We maintain a suppression list of individuals who have opted out of AI-initiated telephone contact. Any individual who requests removal is added immediately to this list, and no further automated calls are made to that number. Suppression records are retained indefinitely to evidence compliance.</p>
+        </section>
+
+        <!-- ── SECTION 5: How We Use Data ── -->
+        <section id="how-we-use" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">5</span>
+            How We Use Your Data
+          </h2>
+          <p>Personal data collected through PlumberAI is used solely for the following purposes:</p>
+          <ul>
+            <li><strong>Service triage and qualification:</strong> Routing inbound callers to the appropriate service level (emergency, urgent, or routine) on behalf of our Plumber Clients.</li>
+            <li><strong>Lead notification:</strong> Sending an SMS alert to the relevant Plumber Client containing qualified lead information so they can promptly follow up.</li>
+            <li><strong>CRM logging:</strong> Recording call outcomes in the Plumber Client's Google Sheets CRM for operational tracking and reporting.</li>
+            <li><strong>Quality assurance:</strong> Reviewing call recordings and transcripts to monitor AI performance and improve service quality.</li>
+            <li><strong>Compliance monitoring:</strong> Verifying adherence to PECR, the DNC suppression list, and this Privacy Policy.</li>
+            <li><strong>Platform analytics:</strong> Aggregated and anonymised analysis of call volumes, urgency distributions, and system performance. No individual is identified from this analysis.</li>
+          </ul>
+          <p>We do not use personal data for marketing, profiling, automated decision-making that produces legal or similarly significant effects, or any purpose incompatible with those listed above.</p>
+        </section>
+
+        <!-- ── SECTION 6: Third-Party Processors ── -->
+        <section id="third-parties" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">6</span>
+            Third-Party Data Processors
+          </h2>
+          <p>We engage the following sub-processors to deliver our service. Each is engaged under a written data processing agreement in accordance with Article 28 UK GDPR. All processors are required to implement appropriate technical and organisational measures to protect personal data.</p>
+
+          <div class="not-prose overflow-x-auto rounded-xl border border-slate-200 mb-4">
+            <table class="w-full text-sm min-w-[560px]">
+              <thead>
+                <tr class="bg-slate-50 border-b border-slate-200">
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Processor</th>
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Purpose</th>
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Data Shared</th>
+                  <th class="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">Location</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3">
+                    <div class="font-semibold text-slate-700">Bland.ai</div>
+                    <div class="text-xs text-slate-400 mt-0.5">AI voice call platform</div>
+                  </td>
+                  <td class="px-4 py-3 text-slate-600">Conducting and routing AI-powered telephone calls; speech-to-text transcription</td>
+                  <td class="px-4 py-3 text-slate-500">Phone number, call audio, call transcript</td>
+                  <td class="px-4 py-3">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">USA</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3">
+                    <div class="font-semibold text-slate-700">Twilio Inc.</div>
+                    <div class="text-xs text-slate-400 mt-0.5">SMS delivery</div>
+                  </td>
+                  <td class="px-4 py-3 text-slate-600">Sending SMS lead alerts to Plumber Clients</td>
+                  <td class="px-4 py-3 text-slate-500">Caller name, phone number, postcode, issue type, urgency level</td>
+                  <td class="px-4 py-3">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">USA / EU</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3">
+                    <div class="font-semibold text-slate-700">Google LLC</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Google Sheets CRM</div>
+                  </td>
+                  <td class="px-4 py-3 text-slate-600">Storing lead records and call outcomes in spreadsheet-based CRM</td>
+                  <td class="px-4 py-3 text-slate-500">All lead data fields listed in Section 3</td>
+                  <td class="px-4 py-3">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">USA / EU</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3">
+                    <div class="font-semibold text-slate-700">Make.com (Celonis SE)</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Workflow automation</div>
+                  </td>
+                  <td class="px-4 py-3 text-slate-600">Orchestrating data flows between Bland.ai, Twilio, and Google Sheets via automated scenarios</td>
+                  <td class="px-4 py-3 text-slate-500">Caller name, phone number, postcode, issue type, urgency level</td>
+                  <td class="px-4 py-3">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">EU</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50 transition">
+                  <td class="px-4 py-3">
+                    <div class="font-semibold text-slate-700">Netlify Inc.</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Web hosting</div>
+                  </td>
+                  <td class="px-4 py-3 text-slate-600">Hosting the PlumberAI client dashboard and any associated web pages</td>
+                  <td class="px-4 py-3 text-slate-500">IP address, browser metadata (dashboard users only)</td>
+                  <td class="px-4 py-3">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">USA / EU</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>International transfers:</strong> Where processors are located outside the UK (including the United States), data transfers are made in accordance with UK GDPR Chapter V, either on the basis of UK adequacy regulations, UK International Data Transfer Agreements (IDTAs), or the International Data Transfer Addendum to the EU Standard Contractual Clauses (UK Addendum). Upon request, we can provide details of the transfer mechanisms in place for each processor.</p>
+          <p>We do not sell personal data to any third party, nor do we share data with advertisers or data brokers.</p>
+        </section>
+
+        <!-- ── SECTION 7: Retention ── -->
+        <section id="retention" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">7</span>
+            Retention Period
+          </h2>
+
+          <div class="not-prose bg-slate-50 rounded-xl border border-slate-200 p-5 mb-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Lead records (CRM)</p>
+                  <p class="text-sm font-bold text-slate-800">12 months</p>
+                  <p class="text-xs text-slate-500">from date of call</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Call recordings</p>
+                  <p class="text-sm font-bold text-slate-800">90 days</p>
+                  <p class="text-xs text-slate-500">then automatically deleted</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">DNC suppression records</p>
+                  <p class="text-sm font-bold text-slate-800">Indefinite</p>
+                  <p class="text-xs text-slate-500">to evidence opt-out compliance</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">System logs</p>
+                  <p class="text-sm font-bold text-slate-800">30 days</p>
+                  <p class="text-xs text-slate-500">rolling retention</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>At the end of the applicable retention period, personal data is securely deleted or anonymised. Plumber Clients are responsible for managing their own copies of lead data exported from the PlumberAI platform. We recommend Plumber Clients apply equivalent retention schedules to any data they hold independently.</p>
+          <p>Retention periods may be extended where required by applicable law, a regulatory obligation, or ongoing legal proceedings.</p>
+        </section>
+
+        <!-- ── SECTION 8: Your Rights ── -->
+        <section id="your-rights" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">8</span>
+            Your Rights Under UK GDPR
+          </h2>
+          <p>As a data subject, you have the following rights in relation to your personal data. To exercise any right, please contact us using the details in Section 13. We will respond within <strong>one calendar month</strong> of receiving your request.</p>
+
+          <div class="not-prose grid sm:grid-cols-2 gap-3 mb-4">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right of access (Article 15)</p>
+              <p class="text-xs text-slate-500">You may request a copy of the personal data we hold about you.</p>
+            </div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right to rectification (Article 16)</p>
+              <p class="text-xs text-slate-500">You may request correction of inaccurate or incomplete data.</p>
+            </div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right to erasure (Article 17)</p>
+              <p class="text-xs text-slate-500">You may request deletion of your data in certain circumstances, including where the data is no longer necessary for the purpose it was collected.</p>
+            </div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right to restriction (Article 18)</p>
+              <p class="text-xs text-slate-500">You may request that we restrict processing of your data whilst a dispute is resolved.</p>
+            </div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right to object (Article 21)</p>
+              <p class="text-xs text-slate-500">You may object to processing based on legitimate interests. We will comply unless we demonstrate compelling legitimate grounds.</p>
+            </div>
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+              <p class="font-semibold text-slate-700 text-sm mb-1">Right to data portability (Article 20)</p>
+              <p class="text-xs text-slate-500">Where processing is based on consent or contract and is automated, you may request your data in a machine-readable format.</p>
+            </div>
+          </div>
+
+          <p><strong>Right to opt out of AI calls:</strong> If you do not wish to receive calls from PlumberAI-powered systems, please inform the AI receptionist verbally during the call (e.g. "please remove me from your list"), or contact us directly. Your number will be added to our DNC suppression list immediately.</p>
+          <p><strong>Right to complain:</strong> You have the right to lodge a complaint with the Information Commissioner's Office (ICO) at any time. The ICO can be contacted at <a href="https://ico.org.uk/make-a-complaint" target="_blank" rel="noopener">ico.org.uk/make-a-complaint</a> or by telephone on 0303 123 1113. We would, however, appreciate the opportunity to address your concerns before you contact the ICO.</p>
+        </section>
+
+        <!-- ── SECTION 9: Security ── -->
+        <section id="security" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">9</span>
+            Security Measures
+          </h2>
+          <p>We implement appropriate technical and organisational measures to protect personal data against unauthorised access, accidental loss, destruction, or alteration. These measures include:</p>
+          <ul>
+            <li>Encrypted data transmission (TLS/HTTPS) across all services and APIs</li>
+            <li>Access controls limiting data access to authorised personnel and Plumber Clients only</li>
+            <li>Password-protected client dashboards with session expiry</li>
+            <li>Webhook authentication tokens for Make.com automation endpoints</li>
+            <li>Regular security reviews of third-party processor configurations</li>
+            <li>Strict data minimisation — only data necessary for service delivery is collected</li>
+          </ul>
+          <p>In the event of a personal data breach that is likely to result in a risk to individuals' rights and freedoms, we will notify the ICO within 72 hours of becoming aware of the breach and, where required, notify affected individuals without undue delay.</p>
+        </section>
+
+        <!-- ── SECTION 10: Cookies ── -->
+        <section id="cookies" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">10</span>
+            Cookies &amp; Session Storage
+          </h2>
+          <p>The PlumberAI client dashboard uses <strong>session storage</strong> (a browser technology) solely to maintain your login state during an active browsing session. This data is automatically cleared when you close your browser tab. We do not use persistent cookies for tracking, advertising, or analytics purposes.</p>
+          <p>Third-party services (including Netlify) may set their own cookies for infrastructure purposes (e.g. load balancing). These are strictly necessary cookies and do not require consent under PECR.</p>
+        </section>
+
+        <!-- ── SECTION 11: ICO Registration ── -->
+        <section id="ico" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">11</span>
+            ICO Registration
+          </h2>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+            <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <p class="text-sm font-semibold text-amber-800">Action required: ICO registration</p>
+              <p class="text-sm text-amber-700 mt-1">Organisations that process personal data in the UK are required to register with the Information Commissioner's Office (ICO) and pay the appropriate data protection fee. Most organisations pay the Tier 1 fee of <strong>£40/year</strong>.</p>
+              <p class="text-sm text-amber-700 mt-2">PlumberAI's ICO registration reference number: <strong class="font-mono bg-amber-100 px-2 py-0.5 rounded">[ICO REGISTRATION NUMBER — TO BE COMPLETED]</strong></p>
+              <a href="https://ico.org.uk/registration/new" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-1 mt-2 text-sm text-amber-800 underline font-medium hover:text-amber-900">
+                Register with the ICO →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SECTION 12: Changes ── -->
+        <section id="changes" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5 prose">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">12</span>
+            Changes to This Policy
+          </h2>
+          <p>We review this Privacy Policy at least annually and whenever there is a material change to our processing activities, sub-processors, or applicable law. When we make significant changes, we will notify Plumber Clients by email at least 30 days before the updated policy takes effect.</p>
+          <p>The "Effective date" at the top of this page indicates when the current version came into force. Previous versions are available on request.</p>
+        </section>
+
+        <!-- ── SECTION 13: Contact ── -->
+        <section id="contact" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+          <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold">13</span>
+            Contact Us
+          </h2>
+          <p class="text-sm text-slate-600 mb-4">For any questions about this Privacy Policy, to exercise your data subject rights, or to raise a concern, please contact us:</p>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 text-center">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center mx-auto mb-2">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Email</p>
+              <a href="mailto:[email protected]" class="text-sm text-blue-600 hover:underline font-medium">[email protected]</a>
+            </div>
+            <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 text-center">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center mx-auto mb-2">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Postal address</p>
+              <p class="text-sm text-slate-700">[Address — to be completed]</p>
+            </div>
+            <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 text-center">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center mx-auto mb-2">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Response time</p>
+              <p class="text-sm text-slate-700 font-semibold">Within 1 calendar month</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <p class="text-center text-xs text-slate-400 mt-4 mb-8">
+          PlumberAI · AI Receptionist for London Plumbers · £297/month
+          <span class="mx-2">·</span>
+          <a href="dashboard.html" class="hover:text-slate-600 transition">Client Dashboard</a>
+          <span class="mx-2">·</span>
+          UK GDPR compliant · Data Protection Act 2018
+        </p>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Highlight active TOC item on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks  = document.querySelectorAll('.toc-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

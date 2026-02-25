@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - PlumberAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html [id] {
+            scroll-margin-top: 80px;
+        }
+
+        body {
+            background-color: #f1f5f9;
+        }
+
+        .toc-link {
+            @apply block px-3 py-2 rounded-lg text-sm text-slate-600 hover:bg-slate-50 transition-colors;
+        }
+
+        .toc-link.active {
+            @apply bg-blue-50 text-blue-700 font-semibold;
+        }
+
+        .prose {
+            @apply text-slate-700 leading-relaxed;
+        }
+
+        @media print {
+            nav {
+                display: none;
+            }
+
+            aside {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Lightning Bolt Logo -->
+                <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2L28 14H18L16 30L4 18H14L16 2Z" fill="#2563eb" stroke="#1e40af" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900">PlumberAI</h1>
+                    <p class="text-xs text-slate-600">Terms of Service</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors text-sm font-medium">
+                    Print
+                </button>
+                <a href="/dashboard" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors text-sm font-medium">
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-8">
+        <!-- Sidebar Table of Contents -->
+        <aside class="hidden lg:block w-64 flex-shrink-0 sticky top-24 h-fit">
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+                <h2 class="text-sm font-bold text-slate-900 mb-4">Contents</h2>
+                <nav class="space-y-1">
+                    <a href="#overview" class="toc-link">1. Overview</a>
+                    <a href="#service-description" class="toc-link">2. Service Description</a>
+                    <a href="#client-obligations" class="toc-link">3. Client Obligations</a>
+                    <a href="#payment-terms" class="toc-link">4. Payment Terms</a>
+                    <a href="#cancellation" class="toc-link">5. Cancellation & Termination</a>
+                    <a href="#liability" class="toc-link">6. Liability Limitation</a>
+                    <a href="#data-processing" class="toc-link">7. Data Processing</a>
+                    <a href="#ai-disclaimer" class="toc-link">8. AI System Disclaimer</a>
+                    <a href="#intellectual-property" class="toc-link">9. Intellectual Property</a>
+                    <a href="#confidentiality" class="toc-link">10. Confidentiality</a>
+                    <a href="#service-changes" class="toc-link">11. Changes to Service</a>
+                    <a href="#governing-law" class="toc-link">12. Governing Law</a>
+                    <a href="#contact" class="toc-link">13. Contact & Notices</a>
+                </nav>
+
+                <!-- UK Law Compliant Badge -->
+                <div class="mt-6 pt-6 border-t border-slate-100">
+                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 border border-blue-200">
+                        <svg class="w-4 h-4 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-xs font-semibold text-blue-700">UK Law Compliant</span>
+                    </div>
+                </div>
+
+                <!-- Last Reviewed -->
+                <div class="mt-4">
+                    <p class="text-xs text-slate-600">Last reviewed 25 February 2026</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <!-- Hero Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <p class="text-xs font-semibold text-blue-700 uppercase tracking-wider">Version 1.0</p>
+                        <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Terms of Service</h1>
+                        <p class="text-slate-600 mt-2">Effective 25 February 2026</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200">
+                            <span class="text-xs font-semibold text-blue-700">B2B SaaS Agreement</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200">
+                            <span class="text-xs font-semibold text-blue-700">30-Day Notice to Cancel</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200">
+                            <span class="text-xs font-semibold text-blue-700">England & Wales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Overview -->
+            <section id="overview" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">1</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Overview</h2>
+                        <div class="prose space-y-4">
+                            <p>PlumberAI is a business-to-business Software-as-a-Service (SaaS) AI receptionist service designed specifically for plumbing businesses. These terms of service govern the contractual relationship between PlumberAI Ltd ("we", "us", "our") and plumbing businesses and contractors that use our service ("Client", "you", "your").</p>
+                            <p>These terms constitute a B2B commercial contract. Consumer rights legislation (including the Consumer Rights Act 2015) does not apply to this agreement. Both parties acknowledge they are entering into this agreement as businesses with the requisite commercial understanding.</p>
+                            <p>The agreement is formed upon written acceptance (via email or electronic sign-up) of these terms by the Client. Acceptance constitutes a binding contract between the parties.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Service Description -->
+            <section id="service-description" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">2</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Service Description</h2>
+                        <div class="prose space-y-4">
+                            <p>PlumberAI provides an AI-powered telephone answering service utilising voice technology from Bland.ai. Our service is designed to intelligently triage and qualify inbound calls for plumbing businesses.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Service Includes:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Inbound call reception and triage</li>
+                                <li>Lead qualification based on defined criteria</li>
+                                <li>Urgency categorisation (urgent/routine)</li>
+                                <li>SMS alert dispatch to Client's registered mobile number</li>
+                                <li>Automated CRM logging to Client's Google Sheets integration</li>
+                                <li>Service pathway reference: <code class="bg-slate-100 px-2 py-1 rounded text-sm">e3caf18f-3bda-4927-b6dd-437a6d5e903b</code></li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Service Does NOT Include:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Booking or scheduling appointments on behalf of the Client</li>
+                                <li>Providing quotations or pricing to callers</li>
+                                <li>Guaranteeing minimum lead volume or conversion rates</li>
+                                <li>Replacing human staff or live reception services</li>
+                                <li>24/7 availability (subject to Client's configured coverage hours)</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Service Level Agreement:</h3>
+                            <p>PlumberAI targets 99% uptime on a monthly basis. Scheduled maintenance and third-party outages (Bland.ai, Twilio, Make.com) are excluded from this calculation. We will notify Clients of scheduled maintenance at least 48 hours in advance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Client Obligations -->
+            <section id="client-obligations" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">3</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Client Obligations</h2>
+                        <div class="prose space-y-4">
+                            <p>As a Client, you agree to:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Provide Accurate Information:</strong> Supply truthful, complete, and current information during onboarding, including business name, contact details, and call handling preferences.</li>
+                                <li><strong>Maintain Mobile Number:</strong> Keep your registered mobile number active and monitored to receive SMS alerts of inbound leads.</li>
+                                <li><strong>Respond to Leads:</strong> Respond to qualified leads within 2 hours during your configured service coverage hours to maximise conversion.</li>
+                                <li><strong>Lawful Use:</strong> Use the service only for lawful purposes and in compliance with all applicable laws and regulations.</li>
+                                <li><strong>Credential Security:</strong> Keep your login credentials confidential and do not share your account details with unauthorised third parties.</li>
+                                <li><strong>Report Unauthorised Access:</strong> Notify PlumberAI within 24 hours of suspecting any unauthorised access to your account.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Payment Terms -->
+            <section id="payment-terms" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">4</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Payment Terms</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Pricing:</h3>
+                            <p>The service is priced at <strong>£297 per month for each active AI receptionist line</strong>. This pricing is exclusive of Value Added Tax (VAT) where applicable.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Billing:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Invoices are issued monthly in advance via Stripe</li>
+                                <li>Payment is due upon invoice issue</li>
+                                <li>First payment is due at sign-up before service commences</li>
+                                <li>Payments are processed by Stripe (subject to Stripe's terms)</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Refund Policy:</h3>
+                            <p>No refunds are issued for partial months of service. If you cancel mid-month, you will not receive a refund for the remainder of that month.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Late Payment:</h3>
+                            <p>If payment is not received within 7 calendar days of the invoice date, PlumberAI may suspend service until payment is cleared. No additional reconnection fees apply; service resumes upon payment receipt.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Price Changes:</h3>
+                            <p>PlumberAI reserves the right to adjust pricing with a minimum of 30 days' written notice to the Client. If you do not wish to accept the new pricing, you may cancel within the notice period without penalty.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Cancellation & Termination -->
+            <section id="cancellation" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">5</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Cancellation & Termination</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Mutual Cancellation (30-Day Notice):</h3>
+                            <p>Either party may cancel this agreement by providing 30 days' written notice via email to the other party. The service will continue to operate during the 30-day notice period.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Client Cancellation:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Send cancellation notice via email to [email protected]</li>
+                                <li>Service continues through the end of the 30-day notice period</li>
+                                <li>No refund of advance monthly payments is issued</li>
+                                <li>Cancellation is effective on the final day of the notice period</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Immediate Termination by PlumberAI:</h3>
+                            <p>PlumberAI may terminate service immediately without notice if:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>The Client fails to pay invoices (7+ days overdue)</li>
+                                <li>The Client breaches these terms and fails to remedy within 14 days of written notice</li>
+                                <li>The Client uses the service for unlawful purposes</li>
+                                <li>The service becomes commercially unviable or technically impossible to maintain</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Data Handling on Termination:</h3>
+                            <p>Upon termination, PlumberAI will securely delete all Client data within 30 days, in accordance with our Data Retention Policy and GDPR requirements. Clients may request data export prior to deletion.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Liability Limitation -->
+            <section id="liability" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">6</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Liability Limitation</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Limitation of Liability:</h3>
+                            <p><strong>PlumberAI's total liability to the Client, arising from or related to this agreement, is capped at the fees paid by the Client in the preceding one month (maximum £297 for a single line)</strong>. This limitation applies to all claims, whether based on breach of contract, negligence, or any other legal theory.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Exclusions from Liability:</h3>
+                            <p>PlumberAI is not liable for:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Missed calls due to outages of third-party services (Bland.ai, Twilio, Make.com)</li>
+                                <li>Lost revenue, lost profits, or lost business opportunities</li>
+                                <li>Indirect, incidental, special, or consequential damages</li>
+                                <li>Data breaches resulting from the Client's failure to secure login credentials</li>
+                                <li>Service interruptions beyond PlumberAI's reasonable control</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Exceptions to Limitation:</h3>
+                            <p>Nothing in these terms limits liability for:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Death or personal injury caused by PlumberAI's negligence</li>
+                                <li>Fraudulent misrepresentation by PlumberAI</li>
+                                <li>Willful breach of these terms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Data Processing -->
+            <section id="data-processing" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">7</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Data Processing</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Data Controller and Processor:</h3>
+                            <p>The Client is the <strong>data controller</strong> for personal data of callers (e.g., phone numbers, names, reason for call). PlumberAI Ltd acts as the <strong>data processor</strong> and handles this data on the Client's instructions.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Data Processing Agreement:</h3>
+                            <p>A separate Data Processing Agreement (DPA) governs the processing of personal data and is incorporated by reference into these terms. The DPA is available upon request.</p>
+                            <h3 class="text-lg font-semibold text-latex font-semibold text-slate-900 mt-4">Legal Basis:</h3>
+                            <p>The Client warrants that it has the lawful basis (under UK GDPR Article 6) to engage PlumberAI for the handling and processing of caller personal data.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Compliance:</h3>
+                            <p>Both parties comply with the UK General Data Protection Regulation (GDPR) and the Data Protection Act 2018. For further details, please refer to our <a href="/privacy-policy" class="text-blue-700 hover:underline">Privacy Policy</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 8: AI System Disclaimer -->
+            <section id="ai-disclaimer" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">8</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">AI System Disclaimer</h2>
+                        <div class="prose space-y-4">
+                            <p>PlumberAI's receptionist service is powered by artificial intelligence technology provided by Bland.ai. As an AI-powered system, the following disclaimers apply:</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">PlumberAI Does Not Guarantee:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Perfect speech recognition across all accents, dialects, or languages</li>
+                                <li>100% uptime or zero missed calls</li>
+                                <li>Specific lead conversion rates or call completion rates</li>
+                                <li>Flawless understanding of complex customer requests</li>
+                                <li>Availability during network outages or ISP failures</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">AI Behaviour:</h3>
+                            <p>AI responses are pre-programmed by PlumberAI based on the defined call pathway. Unexpected AI behaviour, incorrect information provided by the AI, or unusual responses are not the responsibility of PlumberAI beyond reasonable platform maintenance and updates.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Emergency Communications:</h3>
+                            <p><strong>Clients must not rely solely on the AI receptionist for emergency-critical communications or time-sensitive matters.</strong> Emergency services (999) should not be contacted through the AI system.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 9: Intellectual Property -->
+            <section id="intellectual-property" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">9</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Intellectual Property</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">PlumberAI IP:</h3>
+                            <p>PlumberAI Ltd retains all intellectual property rights in:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>The PlumberAI platform and software</li>
+                                <li>The call pathway logic and algorithms</li>
+                                <li>All documentation, training materials, and documentation</li>
+                                <li>The PlumberAI brand, logos, and trademarks</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Client IP:</h3>
+                            <p>The Client retains all intellectual property rights in their business name, branding, business data, and any custom scripts or prompts provided for the AI to use during calls.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Restrictions:</h3>
+                            <p>The Client may not:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Reverse-engineer, decompile, or attempt to derive the source code</li>
+                                <li>Resell, redistribute, or sublicense the service to third parties</li>
+                                <li>Create derivative works based on the PlumberAI platform</li>
+                                <li>Use the service as a white-label offering</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 10: Confidentiality -->
+            <section id="confidentiality" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">10</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Confidentiality</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Mutual Confidentiality:</h3>
+                            <p>Both PlumberAI and the Client agree to keep each other's confidential information confidential. This includes business strategies, pricing, customer lists, and technical information.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">PlumberAI's Obligations:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Will not share the Client's business data with competing plumbing services</li>
+                                <li>Will not publish Client details or use cases without written consent</li>
+                                <li>Will use reasonable security measures to protect Client data</li>
+                            </ul>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Exceptions:</h3>
+                            <p>Confidentiality obligations do not apply to information that is:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Publicly available or in the public domain</li>
+                                <li>Required to be disclosed by law or court order</li>
+                                <li>Disclosed with the other party's prior written consent</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 11: Changes to Service -->
+            <section id="service-changes" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">11</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Changes to Service</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Feature Updates:</h3>
+                            <p>PlumberAI may update service features, fix bugs, or improve performance with a minimum of 14 days' notice to the Client. Such updates are typically considered enhancements.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Material Changes to Pricing:</h3>
+                            <p>Any material change to service pricing, terms, or subscription tiers requires a minimum of 30 days' written notice. Clients may cancel without penalty if they do not accept the changes.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Acceptance by Continued Use:</h3>
+                            <p>Continued use of PlumberAI after the notice period has expired constitutes acceptance of the changes. If the Client objects to changes, they must cancel within the notice period.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 12: Governing Law -->
+            <section id="governing-law" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">12</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Governing Law</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Jurisdiction:</h3>
+                            <p>These Terms of Service and any disputes arising from or related to the use of PlumberAI shall be governed by and construed in accordance with the law of England and Wales, United Kingdom.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Dispute Resolution:</h3>
+                            <p>In the event of any dispute between PlumberAI and the Client:</p>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li><strong>Mediation (30 Days):</strong> The parties agree to attempt resolution through good faith negotiation or mediation for a minimum of 30 days.</li>
+                                <li><strong>English Courts:</strong> If the dispute remains unresolved after the mediation period, the exclusive jurisdiction for legal proceedings shall be the courts of England and Wales.</li>
+                            </ol>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Arbitration:</h3>
+                            <p>Either party may initiate formal legal proceedings in the English courts if mediation does not resolve the dispute. Both parties waive the right to jury trial in any such proceedings.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 13: Contact & Notices -->
+            <section id="contact" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mb-5">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-100 text-blue-700 text-xs font-bold flex-shrink-0">13</div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">Contact & Notices</h2>
+                        <div class="prose space-y-4">
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Written Notice:</h3>
+                            <p>Any legal notice, cancellation request, or formal communication must be sent in writing via email to:</p>
+                            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 my-4">
+                                <p class="font-mono text-sm"><strong>Email:</strong> <a href="mailto:[email protected]" class="text-blue-700 hover:underline">[email protected]</a></p>
+                            </div>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Notice Deemed Received:</h3>
+                            <p>Email notices are deemed to be received 24 hours after sending (assuming receipt confirmation or no bounce-back). If sending by recorded post, notices are deemed received within 5 business days of posting.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Registered Address:</h3>
+                            <p>For formal legal notices by recorded post, please contact us to obtain the current registered address of PlumberAI Ltd. This address may be updated from time to time.</p>
+                            <h3 class="text-lg font-semibold text-slate-900 mt-4">Contact Support:</h3>
+                            <p>For support requests, billing inquiries, or general questions (not legal notices), please use the support form on the PlumberAI dashboard or email <a href="mailto:support@plumberai.co.uk" class="text-blue-700 hover:underline">support@plumberai.co.uk</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 mt-8 text-center text-slate-600 prose prose-sm">
+                <p>These Terms of Service were last updated on 25 February 2026. Version 1.0</p>
+                <p class="mt-4">PlumberAI Ltd | England & Wales | All rights reserved</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scroll Spy JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+
+            // Intersection Observer for scroll spy
+            const observerOptions = {
+                root: null,
+                rootMargin: '-80px 0px -66% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all links
+                        tocLinks.forEach(link => link.classList.remove('active'));
+
+                        // Add active class to corresponding link
+                        const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sections.forEach(section => observer.observe(section));
+
+            // Smooth scrolling for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

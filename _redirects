@@ -1,0 +1,10 @@
+# PlumberAI — Netlify Redirects
+# Maps clean URLs to actual HTML files (200 = rewrite, not redirect)
+
+/dashboard    /dashboard.html         200
+/privacy      /privacy-policy.html    200
+/terms        /terms-of-service.html  200
+/onboarding   /onboarding-form.html   200
+
+# Catch-all: send unknown routes to homepage
+/*            /index.html             404
