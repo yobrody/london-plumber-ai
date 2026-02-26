@@ -8,7 +8,7 @@ Ordered checklist. ICO registration is intentionally last.
 - [x] Apply revised opening (remove “got 30 seconds” preamble).
 - [x] Merge Q1 + Q2 into one natural question.
 - [ ] Run “loo overflow in Clapham flat” slang test (Bland → Chat with Pathway).
-- [ ] Confirm pathway ID is the one used in Make.com (Module 4).
+- [x] Confirm pathway ID is the one used in Make.com (Module 4).
 
 ## 2. Security & config
 

@@ -26,7 +26,7 @@ So the test isn’t just “does it sound good” — it’s “does it **set th
 
 ## Step 2: Confirm pathway ID in Make.com (you do this)
 
-**Important:** The number in your Make.com URL (e.g. `4408343` in `.../scenarios/4408343/edit`) is the **Make.com scenario ID** — it just identifies this workflow. The **pathway ID** you need is from **Bland AI** (a UUID like `e3caf18f-3bda-4927-b6dd-437a6d5e903b`). You get it in Bland, then paste it into the Make.com module that triggers the call.
+**Important:** The number in your Make.com URL (e.g. `4408343`) is the **Make.com scenario ID** — it just identifies this workflow. The **pathway ID** is from **Bland AI** (a UUID). If the Bland pathway is already in Make.com (first HTTP module has the correct pathway_id), you’re done with this step.
 
 ### 1. Get the pathway ID from Bland (not from Make.com)
 
