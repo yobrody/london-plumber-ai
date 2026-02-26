@@ -48,3 +48,10 @@ Copy that ID and use it in Make.com as below.
 - If the body is **form** (key/value), add or edit a key `pathway_id` with value `e3caf18f-3bda-4927-b6dd-437a6d5e903b`.
 
 Once that’s saved, your scenario will use this Bland pathway (the 21-node plumber flow) when it starts a call.
+
+---
+
+## Optional improvements (noted for later)
+
+- **Personalised opening:** Add `lead_name` and `ai_name` to `request_data` (if the webhook provides them) so the pathway’s opening uses `{{lead_name}}` and `{{ai_name}}`.
+- **Call length:** Consider increasing `max_duration` from 3 to 5–10 minutes if full intake (address, issue, postcode, tenant/landlord, scheduling) often runs longer.
