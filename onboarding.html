@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get started – LondonPlumberAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">LondonPlumberAI</a>
+      <nav class="nav">
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container container-narrow">
+        <h1 class="section-title">Get started</h1>
+        <p class="section-sub">Tell us about your business and we'll be in touch to complete setup and get your AI receptionist live.</p>
+
+        <form id="onboarding-form" class="contact-form onboarding-form" name="onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="onboarding">
+          <p class="hidden">
+            <label for="onboarding-bot">Don't fill this out</label>
+            <input id="onboarding-bot" name="bot-field">
+          </p>
+          <label for="onboarding-business">Business name</label>
+          <input type="text" id="onboarding-business" name="business" required>
+          <label for="onboarding-name">Contact name</label>
+          <input type="text" id="onboarding-name" name="name" required>
+          <label for="onboarding-email">Email</label>
+          <input type="email" id="onboarding-email" name="email" required>
+          <label for="onboarding-phone">Phone</label>
+          <input type="tel" id="onboarding-phone" name="phone" required>
+          <label for="onboarding-postcodes">Postcodes you serve (e.g. SW1–SW10, W1–W11)</label>
+          <input type="text" id="onboarding-postcodes" name="postcodes" placeholder="e.g. SW1-SW10, W1-W11">
+          <label for="onboarding-plan">Preferred plan</label>
+          <select id="onboarding-plan" name="plan">
+            <option value="297">Starter — £297/month</option>
+            <option value="497">Pro — £497/month</option>
+          </select>
+          <label for="onboarding-source">How did you hear about us?</label>
+          <input type="text" id="onboarding-source" name="source" placeholder="e.g. Google, LinkedIn, referral">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div id="onboarding-success" class="form-message form-success" hidden>
+          Thanks for signing up. We'll be in touch to complete setup.
+        </div>
+        <div id="onboarding-error" class="form-message form-error" hidden>
+          Something went wrong. Please try again or <a href="index.html#contact">contact us</a>.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; LondonPlumberAI. London-based AI receptionist for plumbers.</p>
+      <p class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <span aria-hidden="true"> · </span>
+        <a href="terms.html">Terms of Service</a>
+        <span aria-hidden="true"> · </span>
+        <a href="index.html">Home</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('onboarding-form');
+      var successEl = document.getElementById('onboarding-success');
+      var errorEl = document.getElementById('onboarding-error');
+
+      if (!form || !successEl || !errorEl) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.hidden = true;
+        successEl.hidden = true;
+
+        var formData = new FormData(form);
+        var action = form.getAttribute('action') || form.action || window.location.href;
+
+        fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' }
+        })
+          .then(function (response) {
+            if (response.ok) {
+              form.reset();
+              form.style.display = 'none';
+              successEl.hidden = false;
+            } else {
+              errorEl.hidden = false;
+            }
+          })
+          .catch(function () {
+            errorEl.hidden = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
