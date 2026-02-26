@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cold outreach tracker – LondonPlumberAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="outreach.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">LondonPlumberAI</a>
+      <nav class="nav">
+        <a href="outreach.html">Outreach</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Cold outreach tracker</h1>
+        <p class="section-sub">Track London plumber prospects. Data is stored in your browser only (no backend).</p>
+
+        <div class="outreach-toolbar">
+          <div class="outreach-filters">
+            <label for="filter-status">Filter by status</label>
+            <select id="filter-status" aria-label="Filter by status">
+              <option value="">All</option>
+              <option value="Not contacted">Not contacted</option>
+              <option value="Called">Called</option>
+              <option value="Emailed">Emailed</option>
+              <option value="Demo booked">Demo booked</option>
+              <option value="Lost">Lost</option>
+            </select>
+          </div>
+          <div class="outreach-actions">
+            <button type="button" class="btn btn-primary" id="btn-add">Add prospect</button>
+            <button type="button" class="btn btn-secondary" id="btn-export">Export CSV</button>
+          </div>
+        </div>
+
+        <div id="outreach-list" class="outreach-list"></div>
+
+        <div id="outreach-empty" class="outreach-empty" hidden>
+          <p>No prospects yet. Click “Add prospect” to start.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; LondonPlumberAI. Data stored locally in this browser.</p>
+      <p class="footer-links">
+        <a href="index.html">Home</a>
+      </p>
+    </div>
+  </footer>
+
+  <dialog id="prospect-dialog" class="outreach-dialog" aria-labelledby="dialog-title">
+    <form id="prospect-form" method="dialog">
+      <h2 id="dialog-title">Add prospect</h2>
+      <input type="hidden" id="prospect-id" name="id">
+      <label for="prospect-name">Name</label>
+      <input type="text" id="prospect-name" name="name" required>
+      <label for="prospect-business">Business</label>
+      <input type="text" id="prospect-business" name="business">
+      <label for="prospect-phone">Phone</label>
+      <input type="tel" id="prospect-phone" name="phone">
+      <label for="prospect-email">Email</label>
+      <input type="email" id="prospect-email" name="email">
+      <label for="prospect-source">Source</label>
+      <input type="text" id="prospect-source" name="source" placeholder="e.g. Google emergency plumber London">
+      <label for="prospect-status">Status</label>
+      <select id="prospect-status" name="status">
+        <option value="Not contacted">Not contacted</option>
+        <option value="Called">Called</option>
+        <option value="Emailed">Emailed</option>
+        <option value="Demo booked">Demo booked</option>
+        <option value="Lost">Lost</option>
+      </select>
+      <label for="prospect-last-contact">Last contact date</label>
+      <input type="date" id="prospect-last-contact" name="lastContact">
+      <label for="prospect-notes">Notes</label>
+      <textarea id="prospect-notes" name="notes" rows="3"></textarea>
+      <div class="dialog-buttons">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" id="dialog-cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="outreach.js"></script>
+</body>
+</html>
