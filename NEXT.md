@@ -7,14 +7,14 @@ Ordered checklist. ICO registration is intentionally last.
 - [x] Add `{{ai_name}}` to Node 1 opening (branded persona per plumber).
 - [x] Apply revised opening (remove “got 30 seconds” preamble).
 - [x] Merge Q1 + Q2 into one natural question.
-- [ ] Run “loo overflow in Clapham flat” slang test (Bland → Chat with Pathway).
+- [ ] Run “loo overflow in Clapham flat” slang test (later — after E2E is up, then tweak words like loo).
 - [x] Confirm pathway ID is the one used in Make.com (Module 4).
 
-## 2. Security & config
+## 2. Security & config (get everything up and running)
 
-- [ ] Move Bland API key to `.env` (when `2_bland_setup.py` or similar is in this repo or on the same machine).
-- [ ] Add webhook auth token to Make.com Module 1 (so only your scenario can trigger the webhook).
-- [ ] Upgrade Make.com to Core ($9/mo) for more than ~100 leads/month.
+- [ ] **Bland API key in `.env`** — In the folder where your call script lives (e.g. `2_bland_setup.py` on D:\ or in `london-plumber-ai/scripts/`), create a `.env` with `BLAND_API_KEY=your_key`. In the script, load it (e.g. `os.environ.get("BLAND_API_KEY")` or `python-dotenv`). Never commit `.env`.
+- [ ] **Webhook auth in Make.com** — Open your scenario → Webhooks module (Module 1) → add a **custom header** or **token** (e.g. `X-Webhook-Token: your_secret`). In the system that POSTs to the webhook (form, script), send that header/param so only you can trigger the scenario.
+- [ ] **Make.com Core** — If you’ll exceed ~100 ops/month, upgrade at make.com/pricing to Core ($9/mo).
 
 ## 3. Ops
 
