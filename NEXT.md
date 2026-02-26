@@ -4,11 +4,11 @@ Ordered checklist. ICO registration is intentionally last.
 
 ## 1. Bland UI (manual)
 
-- [ ] Add `{{ai_name}}` to Node 1 opening (branded persona per plumber).
-- [ ] Apply revised opening (remove “got 30 seconds” preamble).
-- [ ] Merge Q1 + Q2 into one natural question.
+- [x] Add `{{ai_name}}` to Node 1 opening (branded persona per plumber).
+- [x] Apply revised opening (remove “got 30 seconds” preamble).
+- [x] Merge Q1 + Q2 into one natural question.
 - [ ] Run “loo overflow in Clapham flat” slang test (Bland → Chat with Pathway).
-- [ ] Confirm pathway ID `e3caf18f-3bda-4927-b6dd-437a6d5e903b` is still live.
+- [ ] Confirm pathway ID is the one used in Make.com (Module 4).
 
 ## 2. Security & config
 
