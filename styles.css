@@ -43,6 +43,50 @@ body {
   padding: 0 1.25rem;
 }
 
+.container-narrow {
+  max-width: 42rem;
+}
+
+.legal-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 2rem 0 0.75rem;
+}
+
+.legal-section h2:first-of-type {
+  margin-top: 1rem;
+}
+
+.legal-section p,
+.legal-section ul {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.legal-section ul {
+  padding-left: 1.5rem;
+}
+
+.legal-section li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-updated {
+  font-size: 0.9rem;
+  color: var(--border);
+  margin-bottom: 2rem;
+}
+
+.legal-section a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.legal-section a:hover {
+  text-decoration: underline;
+}
+
 /* Header */
 .site-header {
   background: var(--bg-alt);
@@ -202,6 +246,139 @@ body {
 .result-line strong {
   color: var(--accent);
   font-size: 1.25rem;
+}
+
+/* Pain section */
+.pain-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.pain-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.pain-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.pain-stat-desc {
+  margin: 0;
+  color: var(--text);
+}
+
+/* Compare table */
+.compare-section {
+  overflow: hidden;
+}
+
+.compare-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.compare-table th {
+  background: var(--surface);
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.compare-table td {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.compare-table tbody tr:nth-child(even) td {
+  background: var(--bg-alt);
+}
+
+.compare-table .tick {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.compare-table .cross {
+  color: var(--text);
+  opacity: 0.7;
+}
+
+/* Demo section */
+.demo-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 32rem;
+}
+
+.demo-number {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+
+.demo-number strong {
+  color: var(--text-heading);
+}
+
+.demo-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-left: 0.5rem;
+}
+
+.demo-cta {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.demo-audio {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.demo-audio em {
+  color: var(--border);
+}
+
+/* Footer links */
+.footer-links {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
 /* How it works */
@@ -415,6 +592,10 @@ body {
   }
 
   .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pain-stats {
     grid-template-columns: repeat(3, 1fr);
   }
 
