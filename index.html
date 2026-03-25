@@ -16,8 +16,8 @@
       <nav class="nav">
         <a href="#calculator">Calculator</a>
         <a href="#how-it-works">How it works</a>
-        <a href="#compare">Compare</a>
         <a href="#pricing">Pricing</a>
+        <a href="#compare">Compare</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -178,7 +178,7 @@
               </tr>
               <tr>
                 <td>24/7 inbound call answering</td>
-                <td><span class="cross" aria-label="No">—</span></td>
+                <td><span class="tick" aria-label="Yes">✓</span></td>
                 <td><span class="tick" aria-label="Yes">✓</span></td>
                 <td><span class="tick" aria-label="Yes">✓</span></td>
                 <td><span class="tick" aria-label="Yes">✓</span></td>
@@ -230,7 +230,7 @@
       <div class="container">
         <h2 class="section-title">Get in touch</h2>
         <p class="section-sub">Tell us about your business and we'll show you how we can help.</p>
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="contact-form" action="/" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <p class="hidden">
             <label for="bot-field">Don't fill this out</label>
@@ -245,6 +245,7 @@
           <label for="contact-message">Message</label>
           <textarea id="contact-message" name="message" rows="4" required></textarea>
           <button type="submit" class="btn btn-primary">Send message</button>
+          <p class="form-consent">By submitting this form you agree to our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         </form>
         <div id="form-success" class="form-message form-success" hidden>
           Thanks for your message. We'll be in touch soon.
@@ -270,5 +271,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <div id="cookie-notice" style="position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#ccc;padding:12px 20px;font-size:13px;display:flex;align-items:center;justify-content:space-between;z-index:9999;border-top:1px solid #333;">
+    <span>This site uses Google Fonts served from Google's servers. By continuing you accept this. <a href="privacy-policy.html" style="color:#4fc3f7;">Privacy Policy</a></span>
+    <button onclick="document.getElementById('cookie-notice').style.display='none';localStorage.setItem('cookie-ok','1')" style="background:#4fc3f7;color:#000;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;font-weight:600;">OK</button>
+  </div>
+  <script>if(localStorage.getItem('cookie-ok'))document.getElementById('cookie-notice').style.display='none';</script>
 </body>
 </html>

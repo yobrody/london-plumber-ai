@@ -27,7 +27,7 @@
         <h1 class="section-title">Get started</h1>
         <p class="section-sub">Tell us about your business and we'll be in touch to complete setup and get your AI receptionist live.</p>
 
-        <form id="onboarding-form" class="contact-form onboarding-form" name="onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form id="onboarding-form" class="contact-form onboarding-form" action="/" name="onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="onboarding">
           <p class="hidden">
             <label for="onboarding-bot">Don't fill this out</label>
@@ -51,6 +51,7 @@
           <label for="onboarding-source">How did you hear about us?</label>
           <input type="text" id="onboarding-source" name="source" placeholder="e.g. Google, LinkedIn, referral">
           <button type="submit" class="btn btn-primary">Submit</button>
+          <p class="form-consent">By submitting this form you agree to our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         </form>
 
         <div id="onboarding-success" class="form-message form-success" hidden>
